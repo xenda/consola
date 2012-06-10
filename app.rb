@@ -34,12 +34,6 @@ CODE
   haml :index
 end
 
-get "/process" do
-  #code = Base64.decode64(params[:code])
-  #res = Sicuro.eval(code).val
-  #{}"Hi #{code}"
-end
-
 get '/application.js' do
   coffee :application
 end
@@ -48,5 +42,5 @@ post "/process" do
   puts params.inspect
   result = Sicuro.eval(params[:code])
   puts result.inspect
-  result.value
+  escape_html(result.value)
 end
