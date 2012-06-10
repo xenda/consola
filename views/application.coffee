@@ -7,8 +7,21 @@ $(document).ready ->
   window.template_editor.getSession().on "change", ->
     $('#code_holder').text window.template_editor.getSession().getValue()
 
+  command =
+    name: "gotoline"
+    bindKey:
+      win: "Ctrl-Return"
+      mac: "Command-Return"
+    exec: (editor, line)->
+      processForm()
+
+  window.template_editor.commands.addCommands([command])
+
+  processForm = ->
+    $("#form_upload_code").submit()
+
   $(".send-button").click ->
-    $(@).parent().submit()
+    processForm()
 
   $("#form_upload_code").submit ->
     request = $.ajax

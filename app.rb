@@ -12,19 +12,22 @@ end
 
 get '/' do
   @code =<<CODE
-
-"Welcome to Consola, your friendly Ruby web-console"
-"=================================================="
-"Just type your Ruby code and press *Send my code*"
-"For example, you could type:"
+#
+#  Welcome to Consola, your friendly Ruby web-console"
+#  =================================================="
+#  Just type your Ruby code and press Ctrl+Enter (or Cmd+Enter)"
+#  or that big button below made for our keyboard-impaired brothers"
+#  For example, you could type:"
+#
 
 3.times do
   puts 'OMG THIS IS SO AMAZING'
 end
 
-"or whatever"
-
-"Another useless project made by Alvaro Pereyra (@Yaraher)"
+# or whatever. I'm not your mother. Are you calling me fat?
+#
+# Another useless project made by Alvaro Pereyra (@Yaraher)
+# alvaro@xenda.pe - http://xenda.pe
 
 CODE
   haml :index
