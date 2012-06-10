@@ -5,6 +5,11 @@ require 'base64'
 require 'sicuro'
 require 'coffee-script'
 
+helpers do
+  include Rack::Utils
+  alias_method :h, :escape
+end
+
 get '/' do
   @code =<<CODE
 
