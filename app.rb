@@ -18,7 +18,9 @@ get '/' do
 "Just type your Ruby code and press *Send my code*"
 "For example, you could type:"
 
-puts 'OMG THIS IS SO AMAZING'
+3.times do
+  puts 'OMG THIS IS SO AMAZING'
+end
 
 "or whatever"
 
