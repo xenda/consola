@@ -13,12 +13,13 @@ end
 get '/' do
   @code =<<CODE
 #
-#  Welcome to Consola, your friendly Ruby web-console"
-#  =================================================="
-#  Just type your Ruby code and press Ctrl+Enter (or Cmd+Enter)"
-#  or that big button below made for our keyboard-impaired brothers"
-#  For example, you could type:"
+#  Welcome to Consola, your friendly Ruby web-console
+#  ==================================================
+#  Just type your Ruby code and press Ctrl+Enter
+#  (Cmd+Enter if you're on a Mac) or that big button
+#  below made for our keyboard-impaired brothers
 #
+#  For example, you could type:
 
 3.times do
   puts 'OMG THIS IS SO AMAZING'
