@@ -12,7 +12,7 @@
     .code_editor
       #editor
       %form{:action=>'/process', :method=>'POST', :id => "form_upload_code"}
-        %textarea{:cols => 40, :id=>"code_holder", :style => "display:none", :text => @code, :name => "code"}
+        %textarea{:cols => 40, :id=>"code_holder", :style => "display:none",:name => "code"}=@code
         %a.send-button.link-button{:href => "#"} Send my code!
         #loader
     .results

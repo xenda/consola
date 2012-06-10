@@ -6,7 +6,20 @@ require 'sicuro'
 require 'coffee-script'
 
 get '/' do
-  @code = "puts 'Press Send and watch the magic'"
+  @code =<<CODE
+
+"Welcome to Consola, your friendly Ruby web-console"
+"=================================================="
+"Just type your Ruby code and press *Send my code*"
+"For example, you could type:"
+
+puts 'OMG THIS IS SO AMAZING'
+
+"or whatever"
+
+"Another useless project made my Alvaro Pereyra (@Yaraher)"
+
+CODE
   haml :index
 end
 
@@ -22,6 +35,7 @@ end
 
 post "/process" do
   puts params.inspect
-  result = Sicuro.eval(params[:code]).value
-  result
+  result = Sicuro.eval(params[:code])
+  puts result.inspect
+  result.value
 end
