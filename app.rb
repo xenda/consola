@@ -17,7 +17,7 @@ puts 'OMG THIS IS SO AMAZING'
 
 "or whatever"
 
-"Another useless project made my Alvaro Pereyra (@Yaraher)"
+"Another useless project made by Alvaro Pereyra (@Yaraher)"
 
 CODE
   haml :index
