@@ -1,0 +1,26 @@
+!!!5
+%head
+  %link{:rel => "stylesheet", :href => "/stylesheets/main.css", :type => "text/css"}
+  %title Consola
+  %script{:src => "http://use.typekit.com/vkz1job.js", :type => "text/javascript"}
+  :javascript
+    try{Typekit.load();}catch(e){}
+%body
+  %header
+    %h1.logo Consola
+  .wrapper
+    .code_editor
+      #editor
+      %form{:action=>'/process', :method=>'POST', :id => "form_upload_code"}
+        %textarea{:cols => 40, :id=>"code_holder", :style => "display:none", :text => @code, :name => "code"}
+        %a.send-button.link-button{:href => "#"} Send my code!
+    .results
+      #result_holder
+        ="#=>"
+        = @result
+
+  %script{:charset => "utf-8", :src => "/javascripts/ace.js", :type => "text/javascript"}
+  %script{:charset => "utf-8", :src => "/javascripts/theme-twilight.js", :type => "text/javascript"}
+  %script{:charset => "utf-8", :src => "/javascripts/mode-ruby.js", :type => "text/javascript"}
+  %script{:charset => "utf-8", :src => "/javascripts/jquery-1.7.2.min.js", :type => "text/javascript"}
+  %script{:charset => "utf-8", :src => "/application.js", :type => "text/javascript"}

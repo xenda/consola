@@ -1,3 +1,6 @@
 source 'http://rubygems.org'
 gem 'sinatra'
+gem 'sinatra-contrib'
 gem 'sicuro'
+gem 'haml'
+gem 'coffee-script'
