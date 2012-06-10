@@ -14,9 +14,10 @@
       %form{:action=>'/process', :method=>'POST', :id => "form_upload_code"}
         %textarea{:cols => 40, :id=>"code_holder", :style => "display:none", :text => @code, :name => "code"}
         %a.send-button.link-button{:href => "#"} Send my code!
+        #loader
     .results
       #result_holder
-        ="#=>"
+        ="#=> Hi there, sexy!"
         = @result
 
   %script{:charset => "utf-8", :src => "/javascripts/ace.js", :type => "text/javascript"}

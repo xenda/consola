@@ -14,9 +14,12 @@ $(document).ready ->
     request = $.ajax
       url: "/process"
       type: "POST"
+      beforeSend: ->
+        $("#loader").show()
       data:
         code: $("#code_holder").text()
 
     request.done (msg)->
-      $("#results_holder").append(msg)
+      $("#loader").hide()
+      $("#result_holder").html("#=> #{msg}")
     return false
