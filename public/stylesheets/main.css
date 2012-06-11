@@ -23,10 +23,30 @@ div.code_editor {
 div.results {
 	float: left;
 	width: 440px;
-	height: 380px;
-	padding: 10px;
+	height: 400px;
 	background: #002832;
 	color: #809496;
+}
+
+div#error_message {
+	background-color: #991609;
+	color: #fffeff;
+	position: absolute;
+	width: 440px;
+	border-bottom: 1px solid #a5100a;
+
+}
+
+#content strong {
+	font-size: 28px;	
+	line-height: 1em;
+	color: white;
+}
+
+div#error_message #content {
+	margin: 20px;
+	font-size: 18px;
+		color: #ffd7a3;
 }
 
 .results div {
@@ -36,6 +56,9 @@ font-weight: 400;
 font-size: 20px;
 }
 
+.results #result_holder {
+	padding: 10px;
+}
 
 #editor {
       position: relative;
@@ -46,7 +69,7 @@ font-size: 20px;
 
 .link-button {
 	margin-top: 10px;
-	margin-left: 40px;
+
   -moz-box-shadow:inset 0 1px 0 0 #f7c5c0;
   -webkit-box-shadow:inset 0 1px 0 0 #f7c5c0;
   box-shadow:inset 0 1px 0 0 #f7c5c0;

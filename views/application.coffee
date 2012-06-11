@@ -6,7 +6,7 @@ $(document).ready ->
   window.template_editor.getSession().setMode(new RubyMode())
   window.template_editor.getSession().on "change", ->
     $('#code_holder').text window.template_editor.getSession().getValue()
-
+  $("#error_message").slideUp()
   command =
     name: "gotoline"
     bindKey:
@@ -32,7 +32,20 @@ $(document).ready ->
       data:
         code: $("#code_holder").text()
 
-    request.done (msg)->
+    request.fail (result)->
       $("#loader").hide()
-      $("#result_holder").html("#=> #{msg}")
+      showFailMessage("Ugh, there was an error connecting to our server. Please bare with us and try again soon.")
+
+    request.done (result)->
+      result = JSON.parse(result)
+      $("#error_message").slideUp("1000","easeOutExpo")
+      $("#loader").hide()
+      if error = result["error"]
+        showFailMessage("Easy there, cowboy. There was a bug on your code: <br /><br /><strong>#{error}</strong>")
+      $("#result_holder").html("#{result["value"]}<br />#=> #{result["return"]}")
     return false
+
+  showFailMessage = (message)->
+    div = $("#error_message")
+    div.html("<div id='content'>#{message}</div>")
+    div.slideDown("6000", "easeOutBounce")

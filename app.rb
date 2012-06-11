@@ -39,8 +39,10 @@ get '/application.js' do
 end
 
 post "/process" do
-  puts params.inspect
   result = Sicuro.eval(params[:code])
-  puts result.inspect
-  escape_html(result.value)
+  response = { :value => result.value,
+               :return => result.return
+             }
+  response.merge!({:error => result.exception}) unless result.exception == ""
+  response.to_json
 end
