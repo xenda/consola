@@ -12,6 +12,8 @@
     .code_editor.column
       %h2
         Code Editor
+        %a.saved-as
+        %a.save-link{:href=>"/save"} Save this snippet
       #editor
       .end_column
       %form{:action=>'/process', :method=>'POST', :id => "form_upload_code"}
@@ -24,8 +26,10 @@
         .loader
       #error_message
       #result_holder
-        ="#=> Hi there, sexy!"
-        = @result
+        - if @result
+          = @result
+        - else
+          ="#=> Hi there, sexy!"
       .end_column
   %footer
     Another useless project made by

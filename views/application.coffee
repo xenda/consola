@@ -31,6 +31,27 @@ $(document).ready ->
   $(".send-button").click ->
     processForm()
 
+  $("a.save-link").click ->
+    request = $.ajax
+      url: "/save"
+      type: "POST"
+      beforeSend: ->
+        $(".loader").show()
+      data:
+        code: $("#code_holder").text()
+
+    request.fail (result) ->
+      $(".loader").hide()
+      showFailMessage("I'm sorry... I'm so sorry. Something failed and we couldn't save it. Try again!")
+
+    request.done (result) =>
+      $(".loader").hide()
+      $("#error_message").slideUp("1000","easeOutExpo")
+      $(@).text("Snippet saved!")
+      $("a.saved-as").text("Direct Link")
+      $("a.saved-as").attr("href","http://consola.herokuapp.com/snippet/#{result}")
+    return false
+
   $("#form_upload_code").submit ->
     request = $.ajax
       url: "/process"

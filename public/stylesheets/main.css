@@ -90,6 +90,25 @@ font-size: 20px;
 box-shadow:         0px 0px 10px rgba(50, 50, 50, 1);
 }
 
+a.save-link {
+	float: right;
+	margin-right: 10px;
+	display: block;
+	color: #fffeff;
+	font: 12px "Helvetica Neue", Arial, Helvetica, Geneva, sans-serif;
+		text-shadow: 0px -1px 2px #626262;
+		margin-right: 10px;
+		text-decoration: none;
+}
+
+a.saved-as {
+	float: right;
+		color: #fffeff;
+	font: 12px "Helvetica Neue", Arial, Helvetica, Geneva, sans-serif;
+		text-shadow: 0px -1px 2px #626262;
+
+}
+
 
 #editor {
       position: relative;
