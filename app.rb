@@ -40,8 +40,8 @@ end
 
 post "/process" do
   result = Sicuro.eval(params[:code])
-  response = { :value => result.value,
-               :return => result.return
+  response = { :value => escape_html(result.value),
+               :return => escape_html(result.return)
              }
   response.merge!({:error => result.exception}) unless result.exception == ""
   response.to_json
