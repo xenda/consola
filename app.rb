@@ -11,6 +11,24 @@ helpers do
 end
 
 get '/' do
+
+  if rand(5) > 3
+  example=<<RAND
+10.times do
+   puts "Na"
+end
+
+puts "BATMAN!"
+RAND
+  else
+  example=<<RAND
+10.downto(1) do
+  puts "TIC-TIC"
+end
+puts "B"+"O"*10+"M"
+RAND
+  end
+
   @code =<<CODE
 #
 #  Welcome to Consola, your friendly Ruby web-console
@@ -21,9 +39,7 @@ get '/' do
 #
 #  For example, you could type:
 
-3.times do
-  puts 'OMG THIS IS SO AMAZING'
-end
+#{example}
 
 #  Or whatever. I'm not your mother.
 #
