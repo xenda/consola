@@ -33,9 +33,10 @@ RAND
 #
 #  Welcome to Consola, your friendly Ruby web-console
 #  ==================================================
-#  Just type your Ruby code and press Ctrl+Enter
+#  Type some Ruby code, press Ctrl+Enter
 #  (Cmd+Enter if you're on a Mac) or that big button
-#  below made for our keyboard-impaired brothers
+#  below (made for our keyboard-impaired brothers) and
+#  that's it!
 #
 #  For example, you could type:
 
