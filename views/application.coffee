@@ -1,9 +1,17 @@
 $(document).ready ->
   window.template_editor = ace.edit("editor")
-  window.template_editor.getSession().setValue $("#code_holder").text()
+  editor_session = window.template_editor.getSession()
+  editor_session.setValue $("#code_holder").text()
   window.template_editor.setTheme("ace/theme/twilight")
   RubyMode = require("ace/mode/ruby").Mode
-  window.template_editor.getSession().setMode(new RubyMode())
+  editor_session.setMode(new RubyMode())
+  editor_session.setTabSize(2);
+  editor_session.setUseSoftTabs(true);
+  editor_session.setUseWrapMode(true);
+  window.template_editor.setShowPrintMargin(false);
+
+
+
   window.template_editor.getSession().on "change", ->
     $('#code_holder').text window.template_editor.getSession().getValue()
   $("#error_message").slideUp()
