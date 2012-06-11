@@ -9,17 +9,29 @@
   %header
     %h1.logo Consola
   .wrapper
-    .code_editor
+    .code_editor.column
+      %h2
+        Code Editor
       #editor
+      .end_column
       %form{:action=>'/process', :method=>'POST', :id => "form_upload_code"}
         %textarea{:cols => 40, :id=>"code_holder", :style => "display:none",:name => "code"}=@code
         %a.send-button.link-button{:href => "#"} Send my code!
-        #loader
-    .results
+        .loader
+    .results.column
+      %h2
+        Results terminal
+        .loader
       #error_message
       #result_holder
         ="#=> Hi there, sexy!"
         = @result
+      .end_column
+  %footer
+    Another useless project made by
+    Alvaro Pereyra (@Yaraher) - alvaro@xenda.pe -
+    %a{:href=>"http://xenda.pe", :target => "_blank"} http://xenda.pe
+
 
   %script{:charset => "utf-8", :src => "/javascripts/ace.js", :type => "text/javascript"}
   %script{:charset => "utf-8", :src => "/javascripts/theme-twilight.js", :type => "text/javascript"}

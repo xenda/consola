@@ -28,21 +28,26 @@ $(document).ready ->
       url: "/process"
       type: "POST"
       beforeSend: ->
-        $("#loader").show()
+        $(".loader").show()
       data:
         code: $("#code_holder").text()
 
     request.fail (result)->
-      $("#loader").hide()
+      $(".loader").hide()
       showFailMessage("Ugh, there was an error connecting to our server. Please bare with us and try again soon.")
 
     request.done (result)->
       result = JSON.parse(result)
       $("#error_message").slideUp("1000","easeOutExpo")
-      $("#loader").hide()
+      $(".loader").hide()
       if error = result["error"]
-        showFailMessage("Easy there, cowboy. There was a bug on your code: <br /><br /><strong>#{error}</strong>")
-      $("#result_holder").html("#{result["value"]}<br />#=> #{result["return"]}")
+        showFailMessage("Easy there, cowboy. There was a bug in your code: <br /><br /><strong>#{error}</strong>")
+
+      eval_value = result["value"]
+      eval_return = result["return"]
+      eval_return = "nil" if eval_return  ==  ""
+
+      $("#result_holder").html("#{eval_value}<br />#=> #{eval_return}")
     return false
 
   showFailMessage = (message)->

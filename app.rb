@@ -25,10 +25,11 @@ get '/' do
   puts 'OMG THIS IS SO AMAZING'
 end
 
-# or whatever. I'm not your mother. Are you calling me fat?
+#  Or whatever. I'm not your mother.
 #
-# Another useless project made by Alvaro Pereyra (@Yaraher)
-# alvaro@xenda.pe - http://xenda.pe
+#  Another useless project made by
+#  Alvaro Pereyra (@Yaraher) - alvaro@xenda.pe
+#  http://xenda.pe
 
 CODE
   haml :index
