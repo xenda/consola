@@ -5,8 +5,6 @@ body {
 		background-image: url(../images/background_wood.jpg);
 }
 
-
-
 h1.logo {
 
 font-family: "bello-pro",sans-serif;
@@ -99,6 +97,10 @@ a.save-link {
 		text-shadow: 0px -1px 2px #626262;
 		margin-right: 10px;
 		text-decoration: none;
+}
+
+a.save-link:hover {
+	opacity: 0.5;
 }
 
 a.saved-as {
@@ -203,4 +205,26 @@ footer {
 
 footer a {
 	color: #f7f172;
+}
+
+
+#result_holder ul {
+	margin: 0px;	
+	padding: 0px;
+}
+
+#result_holder ul li {
+	list-style-type: none;
+	margin-bottom: 10px;
+}
+
+#result_holder ul li span.failed_test {
+	display: block;
+	padding: 15px 10px;
+	background-color: #cb283f;
+	color: #fffeff;
+	border-top: 2px solid #eb3e67;
+	font-size: 12px;
+	margin-top: 10px;
+	line-height: 1.6em;
 }

@@ -25,11 +25,15 @@ $(document).ready ->
 
   window.template_editor.commands.addCommands([command])
 
-  processForm = ->
-    $("#form_upload_code").submit()
+  serverError = ->
+    $(".loader").hide()
+    showFailMessage("Ugh, there was an error connecting to our server. Please bare with us and try again soon.")
+
+  processForm = (a)->
+    $(a).parent().submit()
 
   $(".send-button").click ->
-    processForm()
+    processForm(@)
 
   $("a.save-link").click ->
     request = $.ajax
@@ -41,8 +45,7 @@ $(document).ready ->
         code: $("#code_holder").text()
 
     request.fail (result) ->
-      $(".loader").hide()
-      showFailMessage("I'm sorry... I'm so sorry. Something failed and we couldn't save it. Try again!")
+      serverError()
 
     request.done (result) =>
       $(".loader").hide()
@@ -52,9 +55,9 @@ $(document).ready ->
       $("a.saved-as").attr("href","http://consola.herokuapp.com/snippet/#{result}")
     return false
 
-  $("#form_upload_code").submit ->
+  $("#form_tutorial_upload_code").submit ->
     request = $.ajax
-      url: "/process"
+      url: $(@).attr("action")#"/process"
       type: "POST"
       beforeSend: ->
         $(".loader").show()
@@ -62,8 +65,41 @@ $(document).ready ->
         code: $("#code_holder").text()
 
     request.fail (result)->
+      serverError()
+
+    request.done (result)->
+      result = JSON.parse(result)
+      $("#error_message").slideUp("1000","easeOutExpo")
       $(".loader").hide()
-      showFailMessage("Ugh, there was an error connecting to our server. Please bare with us and try again soon.")
+      if error = result["error"]
+        showFailMessage("Easy there, cowboy. There was a bug in your code: <br /><br /><strong>#{error}</strong>")
+
+      results = result["execution"]
+      html = "<ul>"
+      for result in results
+        if result["results"]["status"] == "passed"
+          html += "<li>Everything is ok. You can proceed to the next test</li>"
+        else
+          expected    = result["results"]["exception"]
+          description = result["full_description"]
+          html += "<li>Your code isn't just right yet. <br /><span class='failed_test'>When trying <strong>#{description}</strong> we found<br />#{expected}<br ></span></li>"
+
+      html += "</ul>"
+      $("#result_holder").html(html)
+    return false
+
+
+  $("#form_upload_code").submit ->
+    request = $.ajax
+      url: $(@).attr("action")#"/process"
+      type: "POST"
+      beforeSend: ->
+        $(".loader").show()
+      data:
+        code: $("#code_holder").text()
+
+    request.fail (result)->
+      serverError()
 
     request.done (result)->
       result = JSON.parse(result)
