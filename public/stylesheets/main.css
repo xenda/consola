@@ -218,13 +218,31 @@ footer a {
 	margin-bottom: 10px;
 }
 
-#result_holder ul li span.failed_test {
+#result_holder ul li span.failed_test, #result_holder ul li span.success_test {
 	display: block;
-	padding: 15px 10px;
+	padding: 10px 10px;
+	font-size: 13px;
+	margin-top: 10px;
+	line-height: 1.6em;		
+}
+
+#result_holder ul li span.failed_test span {
+	margin: 10px 0px 0px 10px;
+	display: block;
+}
+
+#result_holder ul li span.success_test a {
+	color: #000;
+}
+
+#result_holder ul li span.failed_test {
 	background-color: #cb283f;
 	color: #fffeff;
 	border-top: 2px solid #eb3e67;
-	font-size: 12px;
-	margin-top: 10px;
-	line-height: 1.6em;
+}
+
+#result_holder ul li span.success_test {
+	background-color: #9ce9ad;
+	color: #4d4d4d;
+	border-top: 2px solid #419b4b;
 }

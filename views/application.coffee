@@ -78,11 +78,11 @@ $(document).ready ->
       html = "<ul>"
       for result in results
         if result["results"]["status"] == "passed"
-          html += "<li>Everything is ok. You can proceed to the next test</li>"
+          html += "<li><span class='success_test'>Everything is ok. <a href='#'>You can proceed to the next test</a></span></li>"
         else
           expected    = result["results"]["exception"]
           description = result["full_description"]
-          html += "<li>Your code isn't just right yet. <br /><span class='failed_test'>When trying <strong>#{description}</strong> we found<br />#{expected}<br ></span></li>"
+          html += "<li>Your code isn't just right yet. <br /><span class='failed_test'>When trying <strong>#{description}</strong> we found<br /><span>#{expected}</span></span></li>"
 
       html += "</ul>"
       $("#result_holder").html(html)
