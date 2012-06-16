@@ -30,7 +30,7 @@ $(document).ready ->
     showFailMessage("Ugh, there was an error connecting to our server. Please bare with us and try again soon.")
 
   processForm = (a)->
-    $(a).parent().submit()
+    $(document).find("form").submit()
 
   $(".send-button").click ->
     processForm(@)

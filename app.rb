@@ -87,7 +87,9 @@ post "/tutorial/:id" do
 
   result = Sicuro.eval(params[:code])
   unless result.exception
-    $value = eval(result.value) 
+    puts "Evaling: #{result.return}"
+    #$value = eval(result.return) 
+    $value = result.return
     puts result.inspect
   end
 
