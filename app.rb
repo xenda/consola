@@ -84,6 +84,13 @@ CODE
 end
 
 post "/tutorial/:id" do
+
+  result = Sicuro.eval(params[:code])
+  unless result.exception
+    $value = eval(result.value) 
+    puts result.inspect
+  end
+
   documentation_formatter = RSpec.configuration.send(:built_in_formatter, :documentation).new(RSpec.configuration.output)
   reporter =  RSpec::Core::Reporter.new(documentation_formatter)
   RSpec.configuration.instance_variable_set(:@reporter, reporter)
@@ -99,8 +106,6 @@ post "/tutorial/:id" do
 
   test_results = documentation_formatter.examples.map(&:metadata).map{|i| {:results => res(i),:full_description => i[:full_description],:description => i[:description]} }
 
-  result = Sicuro.eval(params[:code])
-  puts result.inspect
   response = { :execution => test_results }
   response.merge!({:error => result.exception}) if result.exception
   response.to_json

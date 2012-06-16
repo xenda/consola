@@ -82,7 +82,7 @@ $(document).ready ->
         else
           expected    = result["results"]["exception"]
           description = result["full_description"]
-          html += "<li>Your code isn't just right yet. <br /><span class='failed_test'>When trying <strong>#{description}</strong> we found<br /><span>#{expected}</span></span></li>"
+          html += "<li>Your code isn't right just yet. <br /><span class='failed_test'>When trying <strong>#{description}</strong> we found<br /><span>#{expected}</span></span></li>"
 
       html += "</ul>"
       $("#result_holder").html(html)
@@ -117,5 +117,7 @@ $(document).ready ->
 
   showFailMessage = (message)->
     div = $("#error_message")
+    $("#result_holder").html("")
+
     div.html("<div id='content'>#{message}</div>")
     div.slideDown("6000", "easeOutBounce")
