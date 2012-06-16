@@ -77,18 +77,27 @@ end
 get "/tutorial/:id" do
   @code =<<CODE
 #
-#  Create an array
-#  ==================================================
+#  Welcome to Consola!
+#  ==========================
+#
+#  TUTORIAL 1
+#  Why not present your self?
+#
+#  Type your name while surrounding it with "":
+#
+#  "Alvaro"
+#
 CODE
   haml :tutorial
 end
 
 post "/tutorial/:id" do
-
+  id = params[:id]
+  id ||= 1
   result = Sicuro.eval(params[:code])
   unless result.exception
     puts "Evaling: #{result.return}"
-    #$value = eval(result.return) 
+    #$value = eval(result.return)
     $value = result.return
     puts result.inspect
   end
@@ -96,7 +105,7 @@ post "/tutorial/:id" do
   documentation_formatter = RSpec.configuration.send(:built_in_formatter, :documentation).new(RSpec.configuration.output)
   reporter =  RSpec::Core::Reporter.new(documentation_formatter)
   RSpec.configuration.instance_variable_set(:@reporter, reporter)
-  RSpec::Core::Runner.run(["test/consola_test.rb"])
+  RSpec::Core::Runner.run(["test/#{params[:id]}.rb"])
   #documentation_formatter.examples.map(&:metadata).map{|i| i[:execution_result]}.map{|i| i[:status]}.inspect
 
   def res(r)

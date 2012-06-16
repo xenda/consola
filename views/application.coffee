@@ -29,11 +29,11 @@ $(document).ready ->
     $(".loader").hide()
     showFailMessage("Ugh, there was an error connecting to our server. Please bare with us and try again soon.")
 
-  processForm = (a)->
+  processForm = ->
     $(document).find("form").submit()
 
   $(".send-button").click ->
-    processForm(@)
+    processForm()
 
   $("a.save-link").click ->
     request = $.ajax
@@ -78,7 +78,7 @@ $(document).ready ->
       html = "<ul>"
       for result in results
         if result["results"]["status"] == "passed"
-          html += "<li><span class='success_test'>Everything is ok. <a href='#'>You can proceed to the next test</a></span></li>"
+          html += "<li><span class='success_test'>Excellent, You got it! <a href='#'>You can proceed to the next test</a></span></li>"
         else
           expected    = result["results"]["exception"]
           description = result["full_description"]
